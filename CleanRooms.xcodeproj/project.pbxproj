@@ -67,7 +67,9 @@
 				932ED2211BFC01FC0072C1C4 /* CleanRoomsTests */,
 				932ED2061BFC01FC0072C1C4 /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		932ED2061BFC01FC0072C1C4 /* Products */ = {
 			isa = PBXGroup;
