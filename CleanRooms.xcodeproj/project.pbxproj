@@ -15,6 +15,11 @@
 		932ED2151BFC01FC0072C1C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 932ED2141BFC01FC0072C1C4 /* Assets.xcassets */; };
 		932ED2181BFC01FC0072C1C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 932ED2161BFC01FC0072C1C4 /* LaunchScreen.storyboard */; };
 		932ED2231BFC01FC0072C1C4 /* CleanRoomsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932ED2221BFC01FC0072C1C4 /* CleanRoomsTests.swift */; };
+		932ED23F1BFD69E30072C1C4 /* Room+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932ED23B1BFD69E30072C1C4 /* Room+CoreDataProperties.swift */; };
+		932ED2401BFD69E30072C1C4 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932ED23C1BFD69E30072C1C4 /* Room.swift */; };
+		932ED2411BFD69E30072C1C4 /* Request+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932ED23D1BFD69E30072C1C4 /* Request+CoreDataProperties.swift */; };
+		932ED2421BFD69E30072C1C4 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932ED23E1BFD69E30072C1C4 /* Request.swift */; };
+		932ED2451BFD6BD50072C1C4 /* RoomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932ED2441BFD6BD50072C1C4 /* RoomService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +45,11 @@
 		932ED21E1BFC01FC0072C1C4 /* CleanRoomsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanRoomsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		932ED2221BFC01FC0072C1C4 /* CleanRoomsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanRoomsTests.swift; sourceTree = "<group>"; };
 		932ED2241BFC01FC0072C1C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		932ED23B1BFD69E30072C1C4 /* Room+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Room+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		932ED23C1BFD69E30072C1C4 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		932ED23D1BFD69E30072C1C4 /* Request+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		932ED23E1BFD69E30072C1C4 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		932ED2441BFD6BD50072C1C4 /* RoomService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +93,8 @@
 		932ED2071BFC01FC0072C1C4 /* CleanRooms */ = {
 			isa = PBXGroup;
 			children = (
+				932ED2431BFD6BAC0072C1C4 /* Services */,
+				932ED23A1BFD694A0072C1C4 /* Model */,
 				932ED2081BFC01FC0072C1C4 /* AppDelegate.swift */,
 				932ED20D1BFC01FC0072C1C4 /* MasterViewController.swift */,
 				932ED20F1BFC01FC0072C1C4 /* DetailViewController.swift */,
@@ -102,6 +114,25 @@
 				932ED2241BFC01FC0072C1C4 /* Info.plist */,
 			);
 			path = CleanRoomsTests;
+			sourceTree = "<group>";
+		};
+		932ED23A1BFD694A0072C1C4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				932ED23B1BFD69E30072C1C4 /* Room+CoreDataProperties.swift */,
+				932ED23C1BFD69E30072C1C4 /* Room.swift */,
+				932ED23D1BFD69E30072C1C4 /* Request+CoreDataProperties.swift */,
+				932ED23E1BFD69E30072C1C4 /* Request.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		932ED2431BFD6BAC0072C1C4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				932ED2441BFD6BD50072C1C4 /* RoomService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,8 +237,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				932ED20C1BFC01FC0072C1C4 /* CleanRooms.xcdatamodeld in Sources */,
+				932ED2421BFD69E30072C1C4 /* Request.swift in Sources */,
 				932ED2091BFC01FC0072C1C4 /* AppDelegate.swift in Sources */,
+				932ED2451BFD6BD50072C1C4 /* RoomService.swift in Sources */,
+				932ED2401BFD69E30072C1C4 /* Room.swift in Sources */,
 				932ED20E1BFC01FC0072C1C4 /* MasterViewController.swift in Sources */,
+				932ED2411BFD69E30072C1C4 /* Request+CoreDataProperties.swift in Sources */,
+				932ED23F1BFD69E30072C1C4 /* Room+CoreDataProperties.swift in Sources */,
 				932ED2101BFC01FC0072C1C4 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,6 +434,7 @@
 				932ED2291BFC01FC0072C1C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		932ED22A1BFC01FC0072C1C4 /* Build configuration list for PBXNativeTarget "CleanRoomsTests" */ = {
 			isa = XCConfigurationList;
@@ -406,6 +443,7 @@
 				932ED22C1BFC01FC0072C1C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
