@@ -16,11 +16,11 @@ public class RequestService {
     self.managedObjectContext = managedObjectContext
   }
   
-  public func getAllRequests(onlyOpen: Bool = false) -> [Request] {
+  public func getAllRequests(onlyOpen onlyOpen: Bool = false) -> [Request] {
     let fetchRequest = NSFetchRequest(entityName: "Request")
     
     if onlyOpen {
-      fetchRequest.predicate = NSPredicate(format: "completed", true)
+      fetchRequest.predicate = NSPredicate(format: "completed == %@", true)
     }
 
     fetchRequest.sortDescriptors = [NSSortDescriptor(key: "requestedAt", ascending: true)]

@@ -43,7 +43,13 @@ class RequestServiceTests: XCTestCase {
   }
   
   func testGetAllRequestsOnlyOpen() {
+    let room = insertRoom()
+    insertRequest(room, completed: false)
+    insertRequest(room, completed: true)
     
+    let results = subject.getAllRequests(onlyOpen: true)
+    
+    XCTAssertEqual(1, results.count)
   }
   
   func insertRoom(roomID: String = NSUUID().UUIDString) -> Room {
@@ -59,11 +65,12 @@ class RequestServiceTests: XCTestCase {
     return room
   }
   
-  func insertRequest(room: Room) {
+  func insertRequest(room: Room, completed: Bool = false) {
     let request = NSEntityDescription.insertNewObjectForEntityForName("Request", inManagedObjectContext: testCoreDataStack.managedObjectContext) as! Request
     request.room = room
     request.requestedAt = NSDate()
     request.requestedBy = NSDate()
+    request.completed = completed
     
     testCoreDataStack.saveContext()
   }
