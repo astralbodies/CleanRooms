@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class Request: NSManagedObject {
+public class Request: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 

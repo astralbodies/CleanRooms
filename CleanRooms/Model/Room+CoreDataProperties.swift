@@ -12,7 +12,7 @@
 import Foundation
 import CoreData
 
-extension Room {
+public extension Room {
 
     @NSManaged var area: NSNumber?
     @NSManaged var bathrooms: NSNumber?

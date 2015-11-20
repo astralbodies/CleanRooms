@@ -9,14 +9,14 @@
 import Foundation
 import CoreData
 
-class RoomService {
+public class RoomService {
   let managedObjectContext: NSManagedObjectContext
   
-  init(managedObjectContext: NSManagedObjectContext) {
+  public init(managedObjectContext: NSManagedObjectContext) {
     self.managedObjectContext = managedObjectContext
   }
   
-  func getAllRooms() -> [Room] {
+  public func getAllRooms() -> [Room] {
     let fetchRequest = NSFetchRequest(entityName: "Room")
     fetchRequest.sortDescriptors = [NSSortDescriptor(key: "roomNumber", ascending: true)]
     
@@ -31,7 +31,18 @@ class RoomService {
     return results as! [Room]
   }
   
-  func getRoomByID(roomID: String) -> Room? {
-    return nil
+  public func getRoomByID(roomID: String) -> Room? {
+    let fetchRequest = NSFetchRequest(entityName: "Room")
+    fetchRequest.predicate = NSPredicate(format: "roomID == %@", roomID)
+    
+    var results: [AnyObject]
+    do {
+      try results = managedObjectContext.executeFetchRequest(fetchRequest)
+    } catch {
+      print("Error when fetching Room by ID: \(error)")
+      return nil
+    }
+    
+    return results.first as? Room
   }
 }

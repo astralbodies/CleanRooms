@@ -12,7 +12,7 @@
 import Foundation
 import CoreData
 
-extension Request {
+public extension Request {
 
     @NSManaged var requestID: String?
     @NSManaged var requestedAt: NSDate?

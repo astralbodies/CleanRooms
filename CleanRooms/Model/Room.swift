@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class Room: NSManagedObject {
+public class Room: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 

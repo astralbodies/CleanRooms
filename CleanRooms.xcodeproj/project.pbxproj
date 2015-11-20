@@ -20,6 +20,10 @@
 		932ED2411BFD69E30072C1C4 /* Request+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932ED23D1BFD69E30072C1C4 /* Request+CoreDataProperties.swift */; };
 		932ED2421BFD69E30072C1C4 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932ED23E1BFD69E30072C1C4 /* Request.swift */; };
 		932ED2451BFD6BD50072C1C4 /* RoomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932ED2441BFD6BD50072C1C4 /* RoomService.swift */; };
+		93340C0E1BFF66F2004CCB0C /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93340C0D1BFF66F2004CCB0C /* RequestService.swift */; };
+		93340C121BFF6C33004CCB0C /* TestCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93340C111BFF6C33004CCB0C /* TestCoreDataStack.swift */; };
+		93340C141BFF6F54004CCB0C /* RoomServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93340C131BFF6F54004CCB0C /* RoomServiceTests.swift */; };
+		93340C161BFF7D3A004CCB0C /* RequestServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93340C151BFF7D3A004CCB0C /* RequestServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +54,10 @@
 		932ED23D1BFD69E30072C1C4 /* Request+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		932ED23E1BFD69E30072C1C4 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		932ED2441BFD6BD50072C1C4 /* RoomService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomService.swift; sourceTree = "<group>"; };
+		93340C0D1BFF66F2004CCB0C /* RequestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestService.swift; sourceTree = "<group>"; };
+		93340C111BFF6C33004CCB0C /* TestCoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCoreDataStack.swift; sourceTree = "<group>"; };
+		93340C131BFF6F54004CCB0C /* RoomServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomServiceTests.swift; sourceTree = "<group>"; };
+		93340C151BFF7D3A004CCB0C /* RequestServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +120,9 @@
 			children = (
 				932ED2221BFC01FC0072C1C4 /* CleanRoomsTests.swift */,
 				932ED2241BFC01FC0072C1C4 /* Info.plist */,
+				93340C111BFF6C33004CCB0C /* TestCoreDataStack.swift */,
+				93340C131BFF6F54004CCB0C /* RoomServiceTests.swift */,
+				93340C151BFF7D3A004CCB0C /* RequestServiceTests.swift */,
 			);
 			path = CleanRoomsTests;
 			sourceTree = "<group>";
@@ -131,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				932ED2441BFD6BD50072C1C4 /* RoomService.swift */,
+				93340C0D1BFF66F2004CCB0C /* RequestService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -239,6 +251,7 @@
 				932ED20C1BFC01FC0072C1C4 /* CleanRooms.xcdatamodeld in Sources */,
 				932ED2421BFD69E30072C1C4 /* Request.swift in Sources */,
 				932ED2091BFC01FC0072C1C4 /* AppDelegate.swift in Sources */,
+				93340C0E1BFF66F2004CCB0C /* RequestService.swift in Sources */,
 				932ED2451BFD6BD50072C1C4 /* RoomService.swift in Sources */,
 				932ED2401BFD69E30072C1C4 /* Room.swift in Sources */,
 				932ED20E1BFC01FC0072C1C4 /* MasterViewController.swift in Sources */,
@@ -252,7 +265,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93340C121BFF6C33004CCB0C /* TestCoreDataStack.swift in Sources */,
+				93340C161BFF7D3A004CCB0C /* RequestServiceTests.swift in Sources */,
 				932ED2231BFC01FC0072C1C4 /* CleanRoomsTests.swift in Sources */,
+				93340C141BFF6F54004CCB0C /* RoomServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
