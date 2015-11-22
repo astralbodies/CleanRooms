@@ -23,7 +23,7 @@ public class RequestService {
       fetchRequest.predicate = NSPredicate(format: "completed == %@", true)
     }
 
-    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "requestedAt", ascending: true)]
+    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "requestedAt", ascending: true), NSSortDescriptor(key: "room.roomNumber", ascending: true)]
     
     var results: [AnyObject]
     do {

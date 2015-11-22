@@ -41,6 +41,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
       if let indexPath = self.tableView.indexPathForSelectedRow {
         let object = self.fetchedResultsController.objectAtIndexPath(indexPath)
         let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
+        detailViewController = controller
         controller.managedObjectContext = managedObjectContext
         controller.detailItem = object as? Request
         controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
@@ -110,9 +111,10 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     fetchRequest.fetchBatchSize = 20
     
     // Edit the sort key as appropriate.
-    let sortDescriptor = NSSortDescriptor(key: "dueBy", ascending: false)
+    let sortDescriptor = NSSortDescriptor(key: "dueBy", ascending: true)
+    let sortDescriptor2 = NSSortDescriptor(key: "room.roomNumber", ascending: true)
     
-    fetchRequest.sortDescriptors = [sortDescriptor]
+    fetchRequest.sortDescriptors = [sortDescriptor, sortDescriptor2]
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
@@ -187,6 +189,8 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     syncService.synchronizeAllData { () -> Void in
       dispatch_async(dispatch_get_main_queue(), { () -> Void in
         sender.enabled = true
+        self.detailViewController?.detailItem = nil
+        self.tableView.reloadData()
       })
       
       print("Synchronization complete.")
