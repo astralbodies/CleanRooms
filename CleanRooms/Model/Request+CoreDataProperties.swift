@@ -12,7 +12,7 @@
 import Foundation
 import CoreData
 
-extension Request {
+public extension Request {
 
     @NSManaged var completed: NSNumber?
     @NSManaged var completedBy: String?

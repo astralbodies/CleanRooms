@@ -38,7 +38,7 @@ public class RequestService {
   
   public func getRequestByID(requestID: String) -> Request? {
     let fetchRequest = NSFetchRequest(entityName: "Request")
-    fetchRequest.predicate = NSPredicate(format: "requestID", requestID)
+    fetchRequest.predicate = NSPredicate(format: "requestID == %@", requestID)
     
     var results: [AnyObject]
     do {

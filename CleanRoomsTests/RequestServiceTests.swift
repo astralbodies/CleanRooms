@@ -52,6 +52,24 @@ class RequestServiceTests: XCTestCase {
     XCTAssertEqual(1, results.count)
   }
   
+  func testGetRequestByIDNoMatch() {
+    let request = subject.getRequestByID("123")
+    
+    XCTAssertNil(request)
+  }
+  
+  func testGetRequestByIDMatch() {
+    let room = insertRoom()
+    insertRequest(room, requestID: "123", completed: false)
+
+    let request = subject.getRequestByID("123")
+    
+    XCTAssertNotNil(request)
+  }
+}
+
+// MARK: Helper methods
+extension RequestServiceTests {
   func insertRoom(roomID: String = NSUUID().UUIDString) -> Room {
     let room = NSEntityDescription.insertNewObjectForEntityForName("Room", inManagedObjectContext: testCoreDataStack.managedObjectContext) as! Room
     room.roomID = roomID
@@ -65,12 +83,13 @@ class RequestServiceTests: XCTestCase {
     return room
   }
   
-  func insertRequest(room: Room, completed: Bool = false) {
+  func insertRequest(room: Room, requestID: String = "test", completed: Bool = false) {
     let request = NSEntityDescription.insertNewObjectForEntityForName("Request", inManagedObjectContext: testCoreDataStack.managedObjectContext) as! Request
     request.room = room
     request.requestedAt = NSDate()
     request.dueBy = NSDate()
     request.completed = completed
+    request.requestID = requestID
     
     testCoreDataStack.saveContext()
   }

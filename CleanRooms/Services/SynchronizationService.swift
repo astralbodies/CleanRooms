@@ -31,7 +31,11 @@ public class SynchronizationService {
   }
   
   public func synchronizeAllData(completion: () -> Void) {
-
+    synchronizeRooms { () -> Void in
+      self.synchronizeRequests({ () -> Void in
+        completion()
+      })
+    }
   }
   
   public func synchronizeRooms(completion: () -> Void) {
@@ -79,6 +83,45 @@ public class SynchronizationService {
   }
   
   public func synchronizeRequests(completion: () -> Void) {
-    let existingRequests = requestService.getAllRequests()
+    requestServiceRemote.fetchAllRequests { (remoteRequests) -> Void in
+      self.managedObjectContext.performBlockAndWait({ () -> Void in
+        var existingRequests = self.requestService.getAllRequests()
+        
+        for remoteRequest in remoteRequests {
+          var request = self.requestService.getRequestByID(remoteRequest.requestID!)
+          if let request = request {
+            print("Existing request.")
+            if let index = existingRequests.indexOf(request) {
+              existingRequests.removeAtIndex(index)
+            }
+          } else {
+            // New request
+            print("New request.")
+            request = NSEntityDescription.insertNewObjectForEntityForName("Request", inManagedObjectContext: self.managedObjectContext) as? Request
+          }
+          
+          request!.completed = remoteRequest.completed
+          request!.completedBy = remoteRequest.completedBy
+          request!.requestedAt = remoteRequest.requestedAt
+          request!.dueBy = remoteRequest.dueBy
+          request!.requestID = remoteRequest.requestID
+          request!.revision = remoteRequest.revision
+          request!.room = self.roomService.getRoomByID(remoteRequest.roomID!)
+        }
+        
+        // Delete rooms not in remote API
+        for request in existingRequests {
+          self.managedObjectContext.deleteObject(request)
+        }
+        
+        do {
+          try self.managedObjectContext.save()
+        } catch {
+          print("Error while saving context: \(error)")
+        }
+        
+        completion()
+      })
+    }
   }
 }

@@ -205,7 +205,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     sender.enabled = false
     
     let syncService = SynchronizationService(roomService: roomService, roomServiceRemote: roomServiceRemote, requestService: requestService, requestServiceRemote: requestServiceRemote, managedObjectContext: managedObjectContext!)
-    syncService.synchronizeRooms { () -> Void in
+    syncService.synchronizeAllData { () -> Void in
       dispatch_async(dispatch_get_main_queue(), { () -> Void in
         sender.enabled = true
       })
