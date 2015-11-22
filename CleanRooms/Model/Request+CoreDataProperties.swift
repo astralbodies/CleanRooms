@@ -16,7 +16,7 @@ public extension Request {
 
     @NSManaged var requestID: String?
     @NSManaged var requestedAt: NSDate?
-    @NSManaged var requestedBy: NSDate?
+    @NSManaged var dueBy: NSDate?
     @NSManaged var completed: NSNumber?
     @NSManaged var completedBy: String?
     @NSManaged var room: Room?

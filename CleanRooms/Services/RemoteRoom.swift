@@ -13,6 +13,7 @@ public struct RemoteRoom {
   public var bathrooms: Int?
   public var beds: Int?
   public var roomID: String?
+  public var revision: String?
   public var roomNumber: String?
 
   /* Example data:
@@ -36,6 +37,7 @@ public struct RemoteRoom {
     roomID = jsonData["id"] as? String
     
     let docBody = jsonData["doc"] as? [String: AnyObject]
+    revision = docBody?["_rev"] as? String
     area = docBody?["area"] as? Int
     beds = docBody?["beds"] as? Int
     roomNumber = docBody?["roomNumber"] as? String
