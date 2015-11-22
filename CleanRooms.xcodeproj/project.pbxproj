@@ -26,6 +26,9 @@
 		93340C161BFF7D3A004CCB0C /* RequestServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93340C151BFF7D3A004CCB0C /* RequestServiceTests.swift */; };
 		93340C181BFF90DE004CCB0C /* RoomServiceRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93340C171BFF90DE004CCB0C /* RoomServiceRemote.swift */; };
 		93340C1C1BFF9134004CCB0C /* RemoteRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93340C1B1BFF9134004CCB0C /* RemoteRoom.swift */; };
+		93F1EC411C02062B00D3B8E8 /* RoomServiceRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1EC401C02062B00D3B8E8 /* RoomServiceRemoteTests.swift */; };
+		93F1EC431C02099700D3B8E8 /* MockNSURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1EC421C02099700D3B8E8 /* MockNSURLSession.swift */; };
+		93F1EC461C020AFD00D3B8E8 /* rooms.json in Resources */ = {isa = PBXBuildFile; fileRef = 93F1EC451C020AFD00D3B8E8 /* rooms.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +65,9 @@
 		93340C151BFF7D3A004CCB0C /* RequestServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestServiceTests.swift; sourceTree = "<group>"; };
 		93340C171BFF90DE004CCB0C /* RoomServiceRemote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomServiceRemote.swift; sourceTree = "<group>"; };
 		93340C1B1BFF9134004CCB0C /* RemoteRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteRoom.swift; sourceTree = "<group>"; };
+		93F1EC401C02062B00D3B8E8 /* RoomServiceRemoteTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomServiceRemoteTests.swift; sourceTree = "<group>"; };
+		93F1EC421C02099700D3B8E8 /* MockNSURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNSURLSession.swift; sourceTree = "<group>"; };
+		93F1EC451C020AFD00D3B8E8 /* rooms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rooms.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,11 +128,11 @@
 		932ED2211BFC01FC0072C1C4 /* CleanRoomsTests */ = {
 			isa = PBXGroup;
 			children = (
-				932ED2221BFC01FC0072C1C4 /* CleanRoomsTests.swift */,
+				93F1EC441C020ADA00D3B8E8 /* Test Data */,
+				93F1EC3F1C02060F00D3B8E8 /* Tests */,
 				932ED2241BFC01FC0072C1C4 /* Info.plist */,
 				93340C111BFF6C33004CCB0C /* TestCoreDataStack.swift */,
-				93340C131BFF6F54004CCB0C /* RoomServiceTests.swift */,
-				93340C151BFF7D3A004CCB0C /* RequestServiceTests.swift */,
+				93F1EC421C02099700D3B8E8 /* MockNSURLSession.swift */,
 			);
 			path = CleanRoomsTests;
 			sourceTree = "<group>";
@@ -167,6 +173,25 @@
 				93340C1B1BFF9134004CCB0C /* RemoteRoom.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		93F1EC3F1C02060F00D3B8E8 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				932ED2221BFC01FC0072C1C4 /* CleanRoomsTests.swift */,
+				93340C151BFF7D3A004CCB0C /* RequestServiceTests.swift */,
+				93340C131BFF6F54004CCB0C /* RoomServiceTests.swift */,
+				93F1EC401C02062B00D3B8E8 /* RoomServiceRemoteTests.swift */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+		93F1EC441C020ADA00D3B8E8 /* Test Data */ = {
+			isa = PBXGroup;
+			children = (
+				93F1EC451C020AFD00D3B8E8 /* rooms.json */,
+			);
+			path = "Test Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +285,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93F1EC461C020AFD00D3B8E8 /* rooms.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,9 +316,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				93340C121BFF6C33004CCB0C /* TestCoreDataStack.swift in Sources */,
+				93F1EC411C02062B00D3B8E8 /* RoomServiceRemoteTests.swift in Sources */,
 				93340C161BFF7D3A004CCB0C /* RequestServiceTests.swift in Sources */,
 				932ED2231BFC01FC0072C1C4 /* CleanRoomsTests.swift in Sources */,
 				93340C141BFF6F54004CCB0C /* RoomServiceTests.swift in Sources */,
+				93F1EC431C02099700D3B8E8 /* MockNSURLSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
