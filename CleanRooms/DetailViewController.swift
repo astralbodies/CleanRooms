@@ -7,39 +7,85 @@
 //
 
 import UIKit
+import CoreData
 
-class DetailViewController: UIViewController {
+class DetailViewController: UITableViewController {
   
   @IBOutlet weak var detailDescriptionLabel: UILabel!
+  var managedObjectContext: NSManagedObjectContext!
+  private let dateFormatter = NSDateFormatter()
   
   
-  var detailItem: AnyObject? {
+  var detailItem: Request? {
     didSet {
       // Update the view.
-      self.configureView()
-    }
-  }
-  
-  func configureView() {
-    // Update the user interface for the detail item.
-    if let detail = self.detailItem {
-      if let label = self.detailDescriptionLabel {
-        label.text = detail.valueForKey("dueBy")!.description
-      }
+      self.tableView.reloadData()
     }
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
-    self.configureView()
+
+    dateFormatter.dateStyle = .ShortStyle
+    dateFormatter.timeStyle = .ShortStyle
+    dateFormatter.locale = NSLocale.currentLocale()
+  }
+
+  @IBAction func markRequestAsCompleted() {
+    let requestService = RequestService(managedObjectContext: managedObjectContext)
+    requestService.markRequestAsCompleted(detailItem!.requestID)
+    
+    do {
+      try detailItem?.managedObjectContext?.save()
+    } catch {
+      print("Error while saving Request: \(error)")
+    }
+    
+    detailItem = nil
+    tableView.reloadData()
   }
   
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
+}
+
+// Table View Data Source Methods
+extension DetailViewController {
+  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    return 1
   }
   
+  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if detailItem != nil {
+      return 3
+    } else {
+      return 1
+    }
+  }
   
+  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    let identifier:String = {
+      if self.detailItem == nil {
+        return "NothingSelected"
+      } else if indexPath.row < 2 {
+        return "RightDetail"
+      } else {
+        return "MarkCompleted"
+      }
+    }()
+    
+    let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
+    
+    if identifier == "RightDetail" {
+      switch indexPath.row {
+      case 0:
+        cell.textLabel?.text = "Room Number"
+        cell.detailTextLabel?.text = detailItem?.room?.roomNumber
+      default:
+        cell.textLabel?.text = "Due By"
+        cell.detailTextLabel?.text = "\(dateFormatter.stringFromDate(detailItem!.dueBy!))"
+      }
+    }
+    
+    return cell
+  }
 }
 

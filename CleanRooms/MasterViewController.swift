@@ -13,19 +13,15 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
   
   var detailViewController: DetailViewController? = nil
   var managedObjectContext: NSManagedObjectContext? = nil
+  let dateFormatter = NSDateFormatter()
   
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem()
-    
-//    let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
-//    self.navigationItem.rightBarButtonItem = addButton
-//    if let split = self.splitViewController {
-//      let controllers = split.viewControllers
-//      self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
-//    }
+
+    dateFormatter.dateStyle = .NoStyle
+    dateFormatter.timeStyle = .MediumStyle
+    dateFormatter.locale = NSLocale.currentLocale()
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -38,26 +34,6 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     // Dispose of any resources that can be recreated.
   }
   
-  func insertNewObject(sender: AnyObject) {
-    let context = self.fetchedResultsController.managedObjectContext
-    let entity = self.fetchedResultsController.fetchRequest.entity!
-    let newManagedObject = NSEntityDescription.insertNewObjectForEntityForName(entity.name!, inManagedObjectContext: context)
-    
-    // If appropriate, configure the new managed object.
-    // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-    newManagedObject.setValue(NSDate(), forKey: "dueBy")
-    
-    // Save the context.
-    do {
-      try context.save()
-    } catch {
-      // Replace this implementation with code to handle the error appropriately.
-      // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-      //print("Unresolved error \(error), \(error.userInfo)")
-      abort()
-    }
-  }
-  
   // MARK: - Segues
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -65,7 +41,8 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
       if let indexPath = self.tableView.indexPathForSelectedRow {
         let object = self.fetchedResultsController.objectAtIndexPath(indexPath)
         let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
-        controller.detailItem = object
+        controller.managedObjectContext = managedObjectContext
+        controller.detailItem = object as? Request
         controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
         controller.navigationItem.leftItemsSupplementBackButton = true
       }
@@ -111,8 +88,9 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
   }
   
   func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
-    let object = self.fetchedResultsController.objectAtIndexPath(indexPath)
-    cell.textLabel!.text = object.valueForKey("dueBy")!.description
+    let request = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Request
+    cell.textLabel!.text = "Room \(request.room!.roomNumber!)"
+    cell.detailTextLabel!.text = "Due: \(dateFormatter.stringFromDate(request.dueBy!))"
   }
   
   // MARK: - Fetched results controller
@@ -126,6 +104,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     // Edit the entity name as appropriate.
     let entity = NSEntityDescription.entityForName("Request", inManagedObjectContext: self.managedObjectContext!)
     fetchRequest.entity = entity
+    fetchRequest.predicate = NSPredicate(format: "completed == %@", false)
     
     // Set the batch size to a suitable number.
     fetchRequest.fetchBatchSize = 20

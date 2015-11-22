@@ -61,7 +61,7 @@ public class SynchronizationService {
           room!.beds = remoteRoom.beds
           room!.revision = remoteRoom.revision
           room!.roomNumber = remoteRoom.roomNumber
-          room!.roomID = remoteRoom.roomID
+          room!.roomID = remoteRoom.roomID!
         }
         
         // Delete rooms not in remote API
@@ -104,7 +104,7 @@ public class SynchronizationService {
           request!.completedBy = remoteRequest.completedBy
           request!.requestedAt = remoteRequest.requestedAt
           request!.dueBy = remoteRequest.dueBy
-          request!.requestID = remoteRequest.requestID
+          request!.requestID = remoteRequest.requestID!
           request!.revision = remoteRequest.revision
           request!.room = self.roomService.getRoomByID(remoteRequest.roomID!)
         }

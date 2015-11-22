@@ -50,4 +50,11 @@ public class RequestService {
     
     return results.first as? Request
   }
+  
+  public func markRequestAsCompleted(requestID: String) -> Request? {
+    let request = getRequestByID(requestID)
+    request?.completed = true
+    
+    return request
+  }
 }
