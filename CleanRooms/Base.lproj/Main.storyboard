@@ -104,7 +104,13 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="To Clean" id="Zdf-7t-Un8"/>
+                    <navigationItem key="navigationItem" title="To Clean" id="Zdf-7t-Un8">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="9UF-0n-dN6">
+                            <connections>
+                                <action selector="syncData:" destination="7bK-jq-Zjz" id="oGL-TG-YVM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
@@ -128,6 +134,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Tll-UG-LXB"/>
+        <segue reference="6S0-TO-JiA"/>
     </inferredMetricsTieBreakers>
 </document>
