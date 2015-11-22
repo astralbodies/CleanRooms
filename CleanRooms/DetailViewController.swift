@@ -55,7 +55,7 @@ extension DetailViewController {
   
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if detailItem != nil {
-      return 3
+      return 4
     } else {
       return 1
     }
@@ -65,7 +65,7 @@ extension DetailViewController {
     let identifier:String = {
       if self.detailItem == nil {
         return "NothingSelected"
-      } else if indexPath.row < 2 {
+      } else if indexPath.row < 3 {
         return "RightDetail"
       } else {
         return "MarkCompleted"
@@ -79,9 +79,12 @@ extension DetailViewController {
       case 0:
         cell.textLabel?.text = "Room Number"
         cell.detailTextLabel?.text = detailItem?.room?.roomNumber
-      default:
+      case 1:
         cell.textLabel?.text = "Due By"
         cell.detailTextLabel?.text = "\(dateFormatter.stringFromDate(detailItem!.dueBy!))"
+      default:
+        cell.textLabel?.text = "Requested At"
+        cell.detailTextLabel?.text = "\(dateFormatter.stringFromDate(detailItem!.requestedAt!))"
       }
     }
     
