@@ -24,6 +24,8 @@
 		93340C121BFF6C33004CCB0C /* TestCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93340C111BFF6C33004CCB0C /* TestCoreDataStack.swift */; };
 		93340C141BFF6F54004CCB0C /* RoomServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93340C131BFF6F54004CCB0C /* RoomServiceTests.swift */; };
 		93340C161BFF7D3A004CCB0C /* RequestServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93340C151BFF7D3A004CCB0C /* RequestServiceTests.swift */; };
+		93340C181BFF90DE004CCB0C /* RoomServiceRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93340C171BFF90DE004CCB0C /* RoomServiceRemote.swift */; };
+		93340C1C1BFF9134004CCB0C /* RemoteRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93340C1B1BFF9134004CCB0C /* RemoteRoom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		93340C111BFF6C33004CCB0C /* TestCoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCoreDataStack.swift; sourceTree = "<group>"; };
 		93340C131BFF6F54004CCB0C /* RoomServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomServiceTests.swift; sourceTree = "<group>"; };
 		93340C151BFF7D3A004CCB0C /* RequestServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestServiceTests.swift; sourceTree = "<group>"; };
+		93340C171BFF90DE004CCB0C /* RoomServiceRemote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomServiceRemote.swift; sourceTree = "<group>"; };
+		93340C1B1BFF9134004CCB0C /* RemoteRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteRoom.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,10 +145,28 @@
 		932ED2431BFD6BAC0072C1C4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				93340C191BFF9109004CCB0C /* Remote */,
 				932ED2441BFD6BD50072C1C4 /* RoomService.swift */,
 				93340C0D1BFF66F2004CCB0C /* RequestService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		93340C191BFF9109004CCB0C /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				93340C1A1BFF9113004CCB0C /* Model */,
+				93340C171BFF90DE004CCB0C /* RoomServiceRemote.swift */,
+			);
+			name = Remote;
+			sourceTree = "<group>";
+		};
+		93340C1A1BFF9113004CCB0C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				93340C1B1BFF9134004CCB0C /* RemoteRoom.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,7 +278,9 @@
 				932ED2401BFD69E30072C1C4 /* Room.swift in Sources */,
 				932ED20E1BFC01FC0072C1C4 /* MasterViewController.swift in Sources */,
 				932ED2411BFD69E30072C1C4 /* Request+CoreDataProperties.swift in Sources */,
+				93340C1C1BFF9134004CCB0C /* RemoteRoom.swift in Sources */,
 				932ED23F1BFD69E30072C1C4 /* Room+CoreDataProperties.swift in Sources */,
+				93340C181BFF90DE004CCB0C /* RoomServiceRemote.swift in Sources */,
 				932ED2101BFC01FC0072C1C4 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
