@@ -69,7 +69,7 @@ class RequestServiceTests: XCTestCase {
     let request = NSEntityDescription.insertNewObjectForEntityForName("Request", inManagedObjectContext: testCoreDataStack.managedObjectContext) as! Request
     request.room = room
     request.requestedAt = NSDate()
-    request.requestedBy = NSDate()
+    request.dueBy = NSDate()
     request.completed = completed
     
     testCoreDataStack.saveContext()
