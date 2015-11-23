@@ -32,6 +32,7 @@
 		93B3C7FE1C02269100145389 /* requests.json in Resources */ = {isa = PBXBuildFile; fileRef = 93B3C7FD1C02269100145389 /* requests.json */; };
 		93B3C8001C02274900145389 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C7FF1C02274900145389 /* TestHelpers.swift */; };
 		93B3C8021C02291500145389 /* SynchronizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C8011C02291500145389 /* SynchronizationService.swift */; };
+		93B3C8041C02805A00145389 /* RemoteRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C8031C02805A00145389 /* RemoteRequestTests.swift */; };
 		93F1EC411C02062B00D3B8E8 /* RoomServiceRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1EC401C02062B00D3B8E8 /* RoomServiceRemoteTests.swift */; };
 		93F1EC431C02099700D3B8E8 /* MockNSURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1EC421C02099700D3B8E8 /* MockNSURLSession.swift */; };
 		93F1EC461C020AFD00D3B8E8 /* rooms.json in Resources */ = {isa = PBXBuildFile; fileRef = 93F1EC451C020AFD00D3B8E8 /* rooms.json */; };
@@ -77,6 +78,7 @@
 		93B3C7FD1C02269100145389 /* requests.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = requests.json; sourceTree = "<group>"; };
 		93B3C7FF1C02274900145389 /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		93B3C8011C02291500145389 /* SynchronizationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizationService.swift; sourceTree = "<group>"; };
+		93B3C8031C02805A00145389 /* RemoteRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteRequestTests.swift; sourceTree = "<group>"; };
 		93F1EC401C02062B00D3B8E8 /* RoomServiceRemoteTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomServiceRemoteTests.swift; sourceTree = "<group>"; };
 		93F1EC421C02099700D3B8E8 /* MockNSURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNSURLSession.swift; sourceTree = "<group>"; };
 		93F1EC451C020AFD00D3B8E8 /* rooms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rooms.json; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				93340C131BFF6F54004CCB0C /* RoomServiceTests.swift */,
 				93F1EC401C02062B00D3B8E8 /* RoomServiceRemoteTests.swift */,
 				93B3C7FB1C021C0E00145389 /* RequestServiceRemoteTests.swift */,
+				93B3C8031C02805A00145389 /* RemoteRequestTests.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				93B3C7FC1C021C0E00145389 /* RequestServiceRemoteTests.swift in Sources */,
 				932ED2231BFC01FC0072C1C4 /* CleanRoomsTests.swift in Sources */,
 				93340C141BFF6F54004CCB0C /* RoomServiceTests.swift in Sources */,
+				93B3C8041C02805A00145389 /* RemoteRequestTests.swift in Sources */,
 				93F1EC431C02099700D3B8E8 /* MockNSURLSession.swift in Sources */,
 				93B3C8001C02274900145389 /* TestHelpers.swift in Sources */,
 			);

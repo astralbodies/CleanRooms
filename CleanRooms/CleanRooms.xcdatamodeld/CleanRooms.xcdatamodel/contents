@@ -3,6 +3,7 @@
     <entity name="Request" representedClassName=".Request" syncable="YES">
         <attribute name="completed" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="completedBy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dirty" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="dueBy" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="requestedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="requestID" attributeType="String" syncable="YES"/>
@@ -13,13 +14,14 @@
         <attribute name="area" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="bathrooms" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="beds" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="dirty" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="revision" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="roomID" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="roomNumber" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="requests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Request" inverseName="room" inverseEntity="Request" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Request" positionX="270" positionY="207" width="128" height="150"/>
-        <element name="Room" positionX="261" positionY="198" width="128" height="150"/>
+        <element name="Request" positionX="270" positionY="207" width="128" height="165"/>
+        <element name="Room" positionX="261" positionY="198" width="128" height="165"/>
     </elements>
 </model>

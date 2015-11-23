@@ -24,13 +24,14 @@ import Foundation
 import CoreData
 
 public extension Room {
-
-    @NSManaged var area: NSNumber?
-    @NSManaged var bathrooms: NSNumber?
-    @NSManaged var beds: NSNumber?
-    @NSManaged var roomID: String
-    @NSManaged var roomNumber: String?
-    @NSManaged var revision: String?
-    @NSManaged var requests: NSSet?
-
+  
+  @NSManaged var area: NSNumber?
+  @NSManaged var bathrooms: NSNumber?
+  @NSManaged var beds: NSNumber?
+  @NSManaged var roomID: String
+  @NSManaged var roomNumber: String?
+  @NSManaged var revision: String?
+  @NSManaged var requests: NSSet?
+  @NSManaged var dirty: NSNumber
+  
 }

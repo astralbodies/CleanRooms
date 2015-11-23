@@ -36,7 +36,7 @@ public class RequestService {
     if onlyOpen {
       fetchRequest.predicate = NSPredicate(format: "completed == %@", true)
     }
-
+    
     fetchRequest.sortDescriptors = [NSSortDescriptor(key: "requestedAt", ascending: true), NSSortDescriptor(key: "room.roomNumber", ascending: true)]
     
     var results: [AnyObject]
@@ -44,6 +44,21 @@ public class RequestService {
       try results = managedObjectContext.executeFetchRequest(fetchRequest)
     } catch {
       print("Error when fetching Requests: \(error)")
+      return [Request]()
+    }
+    
+    return results as! [Request]
+  }
+  
+  public func getAllDirtyRequests() -> [Request] {
+    let fetchRequest = NSFetchRequest(entityName: "Request")
+    fetchRequest.predicate = NSPredicate(format: "dirty == %@", true)
+    
+    var results: [AnyObject]
+    do {
+      try results = managedObjectContext.executeFetchRequest(fetchRequest)
+    } catch {
+      print("Error when fetching dirty Requests: \(error)")
       return [Request]()
     }
     
@@ -68,6 +83,7 @@ public class RequestService {
   public func markRequestAsCompleted(requestID: String) -> Request? {
     let request = getRequestByID(requestID)
     request?.completed = true
+    request?.dirty = true
     
     return request
   }

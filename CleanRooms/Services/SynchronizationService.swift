@@ -97,12 +97,46 @@ public class SynchronizationService {
   }
   
   public func synchronizeRequests(completion: () -> Void) {
+    pushDirtyRequests { () -> Void in
+      self.pullUpdatedRequests({ () -> Void in
+        completion()
+      })
+    }
+  }
+  
+  func pushDirtyRequests(completion: () -> Void) {
+    let dirtyRequests = requestService.getAllDirtyRequests()
+    let remoteRequests = dirtyRequests.map { (request) -> RemoteRequest in
+      return RemoteRequest(requestID: request.requestID, revision: request.revision!, roomID: request.room!.roomID, requestedAt: request.requestedAt, dueBy: request.dueBy, completed: request.completed?.boolValue, completedBy: request.completedBy)
+    }
+    
+    requestServiceRemote.updateRemoteRequests(remoteRequests) { (revisions) -> Void in
+      self.managedObjectContext.performBlock({ () -> Void in
+        if let revisions = revisions {
+          for revision in revisions {
+            let request = dirtyRequests[revisions.indexOf(revision)!]
+            request.revision = revision
+          }
+        }
+        
+        do {
+          try self.managedObjectContext.save()
+        } catch {
+          print("Error while saving context: \(error)")
+        }
+        
+        completion()
+      })
+    }
+  }
+  
+  func pullUpdatedRequests(completion: () -> Void) {
     requestServiceRemote.fetchAllRequests { (remoteRequests) -> Void in
       self.managedObjectContext.performBlockAndWait({ () -> Void in
         var existingRequests = self.requestService.getAllRequests()
         
         for remoteRequest in remoteRequests {
-          var request = self.requestService.getRequestByID(remoteRequest.requestID!)
+          var request = self.requestService.getRequestByID(remoteRequest.requestID)
           if let request = request {
             print("Existing request.")
             if let index = existingRequests.indexOf(request) {
@@ -118,9 +152,9 @@ public class SynchronizationService {
           request!.completedBy = remoteRequest.completedBy
           request!.requestedAt = remoteRequest.requestedAt
           request!.dueBy = remoteRequest.dueBy
-          request!.requestID = remoteRequest.requestID!
+          request!.requestID = remoteRequest.requestID
           request!.revision = remoteRequest.revision
-          request!.room = self.roomService.getRoomByID(remoteRequest.roomID!)
+          request!.room = self.roomService.getRoomByID(remoteRequest.roomID)
         }
         
         // Delete rooms not in remote API

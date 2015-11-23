@@ -22,12 +22,10 @@
 
 import Foundation
 
-import Foundation
-
 public struct RemoteRequest {
-  public var requestID: String?
-  public var revision: String?
-  public var roomID: String?
+  public var requestID: String
+  public var revision: String
+  public var roomID: String
   public var requestedAt: NSDate?
   public var dueBy: NSDate?
   public var completed: Bool?
@@ -53,11 +51,11 @@ public struct RemoteRequest {
   */
   public init(jsonData: [String : AnyObject]) {
     var requestedAtTimeInterval:Double?, dueByTimeInterval:Double?
-    requestID = jsonData["id"] as? String
+    requestID = jsonData["id"] as! String
     
     let docBody = jsonData["doc"] as? [String: AnyObject]
-    revision = docBody?["_rev"] as? String
-    roomID = docBody?["roomID"] as? String
+    revision = docBody?["_rev"] as! String
+    roomID = docBody?["roomID"] as! String
     requestedAtTimeInterval = docBody?["requestedAt"] as? Double
     dueByTimeInterval = docBody?["dueBy"] as? Double
     completed = docBody?["completed"] as? Bool
@@ -70,5 +68,29 @@ public struct RemoteRequest {
     if let dueByTimeInterval = dueByTimeInterval {
       dueBy = NSDate(timeIntervalSince1970: dueByTimeInterval)
     }
+  }
+  
+  public init(requestID: String, revision: String, roomID: String, requestedAt: NSDate?, dueBy: NSDate?, completed: Bool?, completedBy: String?) {
+    self.requestID = requestID
+    self.revision = revision
+    self.roomID = roomID
+    self.requestedAt = requestedAt
+    self.dueBy = dueBy
+    self.completed = completed
+    self.completedBy = completedBy
+  }
+  
+  public func jsonDictionary() -> [String: AnyObject] {
+    let dictionary:[String: AnyObject] = [
+      "_id" : requestID,
+      "_rev" : revision,
+      "roomID" : roomID,
+      "completed" : completed ?? false,
+      "completedBy" : completedBy ?? NSNull(),
+      "requestedAt" : requestedAt?.timeIntervalSince1970 ?? NSNull(),
+      "dueBy" : dueBy?.timeIntervalSince1970 ?? NSNull()
+    ]
+    
+    return dictionary
   }
 }
