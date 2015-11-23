@@ -138,13 +138,10 @@ public class SynchronizationService {
         for remoteRequest in remoteRequests {
           var request = self.requestService.getRequestByID(remoteRequest.requestID)
           if let request = request {
-            print("Existing request.")
             if let index = existingRequests.indexOf(request) {
               existingRequests.removeAtIndex(index)
             }
           } else {
-            // New request
-            print("New request.")
             request = NSEntityDescription.insertNewObjectForEntityForName("Request", inManagedObjectContext: self.managedObjectContext) as? Request
           }
           
@@ -157,7 +154,7 @@ public class SynchronizationService {
           request!.room = self.roomService.getRoomByID(remoteRequest.roomID)
         }
         
-        // Delete rooms not in remote API
+        // Delete requests not in remote API
         for request in existingRequests {
           self.managedObjectContext.deleteObject(request)
         }

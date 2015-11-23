@@ -8,17 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		932ED2091BFC01FC0072C1C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932ED2081BFC01FC0072C1C4 /* AppDelegate.swift */; };
-		932ED20C1BFC01FC0072C1C4 /* CleanRooms.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 932ED20A1BFC01FC0072C1C4 /* CleanRooms.xcdatamodeld */; };
 		932ED20E1BFC01FC0072C1C4 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932ED20D1BFC01FC0072C1C4 /* MasterViewController.swift */; };
 		932ED2101BFC01FC0072C1C4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932ED20F1BFC01FC0072C1C4 /* DetailViewController.swift */; };
 		932ED2131BFC01FC0072C1C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 932ED2111BFC01FC0072C1C4 /* Main.storyboard */; };
 		932ED2151BFC01FC0072C1C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 932ED2141BFC01FC0072C1C4 /* Assets.xcassets */; };
 		932ED2181BFC01FC0072C1C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 932ED2161BFC01FC0072C1C4 /* LaunchScreen.storyboard */; };
 		932ED2231BFC01FC0072C1C4 /* CleanRoomsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932ED2221BFC01FC0072C1C4 /* CleanRoomsTests.swift */; };
-		932ED23F1BFD69E30072C1C4 /* Room+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932ED23B1BFD69E30072C1C4 /* Room+CoreDataProperties.swift */; };
-		932ED2401BFD69E30072C1C4 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932ED23C1BFD69E30072C1C4 /* Room.swift */; };
-		932ED2411BFD69E30072C1C4 /* Request+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932ED23D1BFD69E30072C1C4 /* Request+CoreDataProperties.swift */; };
-		932ED2421BFD69E30072C1C4 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932ED23E1BFD69E30072C1C4 /* Request.swift */; };
 		932ED2451BFD6BD50072C1C4 /* RoomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932ED2441BFD6BD50072C1C4 /* RoomService.swift */; };
 		93340C0E1BFF66F2004CCB0C /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93340C0D1BFF66F2004CCB0C /* RequestService.swift */; };
 		93340C121BFF6C33004CCB0C /* TestCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93340C111BFF6C33004CCB0C /* TestCoreDataStack.swift */; };
@@ -33,6 +28,12 @@
 		93B3C8001C02274900145389 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C7FF1C02274900145389 /* TestHelpers.swift */; };
 		93B3C8021C02291500145389 /* SynchronizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C8011C02291500145389 /* SynchronizationService.swift */; };
 		93B3C8041C02805A00145389 /* RemoteRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C8031C02805A00145389 /* RemoteRequestTests.swift */; };
+		93B3C8061C029FFB00145389 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C8051C029FFB00145389 /* CoreDataStack.swift */; };
+		93B3C80F1C02A17400145389 /* Request+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C8091C02A17400145389 /* Request+CoreDataProperties.swift */; };
+		93B3C8101C02A17400145389 /* Room+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C80A1C02A17400145389 /* Room+CoreDataProperties.swift */; };
+		93B3C8111C02A17400145389 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C80B1C02A17400145389 /* Request.swift */; };
+		93B3C8121C02A17400145389 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C80C1C02A17400145389 /* Room.swift */; };
+		93B3C8131C02A17400145389 /* CleanRooms.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C80D1C02A17400145389 /* CleanRooms.xcdatamodeld */; };
 		93F1EC411C02062B00D3B8E8 /* RoomServiceRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1EC401C02062B00D3B8E8 /* RoomServiceRemoteTests.swift */; };
 		93F1EC431C02099700D3B8E8 /* MockNSURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1EC421C02099700D3B8E8 /* MockNSURLSession.swift */; };
 		93F1EC461C020AFD00D3B8E8 /* rooms.json in Resources */ = {isa = PBXBuildFile; fileRef = 93F1EC451C020AFD00D3B8E8 /* rooms.json */; };
@@ -51,7 +52,6 @@
 /* Begin PBXFileReference section */
 		932ED2051BFC01FC0072C1C4 /* CleanRooms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanRooms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		932ED2081BFC01FC0072C1C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		932ED20B1BFC01FC0072C1C4 /* CleanRooms.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CleanRooms.xcdatamodel; sourceTree = "<group>"; };
 		932ED20D1BFC01FC0072C1C4 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		932ED20F1BFC01FC0072C1C4 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		932ED2121BFC01FC0072C1C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,10 +61,6 @@
 		932ED21E1BFC01FC0072C1C4 /* CleanRoomsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanRoomsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		932ED2221BFC01FC0072C1C4 /* CleanRoomsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanRoomsTests.swift; sourceTree = "<group>"; };
 		932ED2241BFC01FC0072C1C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		932ED23B1BFD69E30072C1C4 /* Room+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Room+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		932ED23C1BFD69E30072C1C4 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
-		932ED23D1BFD69E30072C1C4 /* Request+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		932ED23E1BFD69E30072C1C4 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		932ED2441BFD6BD50072C1C4 /* RoomService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomService.swift; sourceTree = "<group>"; };
 		93340C0D1BFF66F2004CCB0C /* RequestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestService.swift; sourceTree = "<group>"; };
 		93340C111BFF6C33004CCB0C /* TestCoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCoreDataStack.swift; sourceTree = "<group>"; };
@@ -79,6 +75,12 @@
 		93B3C7FF1C02274900145389 /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		93B3C8011C02291500145389 /* SynchronizationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizationService.swift; sourceTree = "<group>"; };
 		93B3C8031C02805A00145389 /* RemoteRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteRequestTests.swift; sourceTree = "<group>"; };
+		93B3C8051C029FFB00145389 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		93B3C8091C02A17400145389 /* Request+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		93B3C80A1C02A17400145389 /* Room+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Room+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		93B3C80B1C02A17400145389 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		93B3C80C1C02A17400145389 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		93B3C80E1C02A17400145389 /* CleanRooms.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CleanRooms.xcdatamodel; sourceTree = "<group>"; };
 		93F1EC401C02062B00D3B8E8 /* RoomServiceRemoteTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomServiceRemoteTests.swift; sourceTree = "<group>"; };
 		93F1EC421C02099700D3B8E8 /* MockNSURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNSURLSession.swift; sourceTree = "<group>"; };
 		93F1EC451C020AFD00D3B8E8 /* rooms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rooms.json; sourceTree = "<group>"; };
@@ -126,15 +128,13 @@
 			isa = PBXGroup;
 			children = (
 				932ED2431BFD6BAC0072C1C4 /* Services */,
-				932ED23A1BFD694A0072C1C4 /* Model */,
 				932ED2081BFC01FC0072C1C4 /* AppDelegate.swift */,
-				932ED20D1BFC01FC0072C1C4 /* MasterViewController.swift */,
-				932ED20F1BFC01FC0072C1C4 /* DetailViewController.swift */,
-				932ED2111BFC01FC0072C1C4 /* Main.storyboard */,
 				932ED2141BFC01FC0072C1C4 /* Assets.xcassets */,
-				932ED2161BFC01FC0072C1C4 /* LaunchScreen.storyboard */,
+				932ED20F1BFC01FC0072C1C4 /* DetailViewController.swift */,
 				932ED2191BFC01FC0072C1C4 /* Info.plist */,
-				932ED20A1BFC01FC0072C1C4 /* CleanRooms.xcdatamodeld */,
+				932ED2161BFC01FC0072C1C4 /* LaunchScreen.storyboard */,
+				932ED2111BFC01FC0072C1C4 /* Main.storyboard */,
+				932ED20D1BFC01FC0072C1C4 /* MasterViewController.swift */,
 			);
 			path = CleanRooms;
 			sourceTree = "<group>";
@@ -152,24 +152,11 @@
 			path = CleanRoomsTests;
 			sourceTree = "<group>";
 		};
-		932ED23A1BFD694A0072C1C4 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				932ED23B1BFD69E30072C1C4 /* Room+CoreDataProperties.swift */,
-				932ED23C1BFD69E30072C1C4 /* Room.swift */,
-				932ED23D1BFD69E30072C1C4 /* Request+CoreDataProperties.swift */,
-				932ED23E1BFD69E30072C1C4 /* Request.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		932ED2431BFD6BAC0072C1C4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				93B3C8071C02A09200145389 /* Local */,
 				93340C191BFF9109004CCB0C /* Remote */,
-				932ED2441BFD6BD50072C1C4 /* RoomService.swift */,
-				93340C0D1BFF66F2004CCB0C /* RequestService.swift */,
-				93B3C8011C02291500145389 /* SynchronizationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -191,6 +178,30 @@
 				93B3C7F91C02181500145389 /* RemoteRequest.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		93B3C8071C02A09200145389 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				93B3C8081C02A0A500145389 /* Model */,
+				93B3C8051C029FFB00145389 /* CoreDataStack.swift */,
+				932ED2441BFD6BD50072C1C4 /* RoomService.swift */,
+				93340C0D1BFF66F2004CCB0C /* RequestService.swift */,
+				93B3C8011C02291500145389 /* SynchronizationService.swift */,
+			);
+			name = Local;
+			sourceTree = "<group>";
+		};
+		93B3C8081C02A0A500145389 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				93B3C80D1C02A17400145389 /* CleanRooms.xcdatamodeld */,
+				93B3C80B1C02A17400145389 /* Request.swift */,
+				93B3C8091C02A17400145389 /* Request+CoreDataProperties.swift */,
+				93B3C80C1C02A17400145389 /* Room.swift */,
+				93B3C80A1C02A17400145389 /* Room+CoreDataProperties.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		93F1EC3F1C02060F00D3B8E8 /* Tests */ = {
@@ -318,21 +329,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				932ED20C1BFC01FC0072C1C4 /* CleanRooms.xcdatamodeld in Sources */,
-				932ED2421BFD69E30072C1C4 /* Request.swift in Sources */,
 				932ED2091BFC01FC0072C1C4 /* AppDelegate.swift in Sources */,
 				93340C0E1BFF66F2004CCB0C /* RequestService.swift in Sources */,
+				93B3C8131C02A17400145389 /* CleanRooms.xcdatamodeld in Sources */,
+				93B3C80F1C02A17400145389 /* Request+CoreDataProperties.swift in Sources */,
 				932ED2451BFD6BD50072C1C4 /* RoomService.swift in Sources */,
-				932ED2401BFD69E30072C1C4 /* Room.swift in Sources */,
 				932ED20E1BFC01FC0072C1C4 /* MasterViewController.swift in Sources */,
-				932ED2411BFD69E30072C1C4 /* Request+CoreDataProperties.swift in Sources */,
+				93B3C8061C029FFB00145389 /* CoreDataStack.swift in Sources */,
 				93340C1C1BFF9134004CCB0C /* RemoteRoom.swift in Sources */,
+				93B3C8101C02A17400145389 /* Room+CoreDataProperties.swift in Sources */,
 				93B3C8021C02291500145389 /* SynchronizationService.swift in Sources */,
-				932ED23F1BFD69E30072C1C4 /* Room+CoreDataProperties.swift in Sources */,
 				93340C181BFF90DE004CCB0C /* RoomServiceRemote.swift in Sources */,
 				93B3C7FA1C02181500145389 /* RemoteRequest.swift in Sources */,
+				93B3C8111C02A17400145389 /* Request.swift in Sources */,
 				93B3C7F81C0217DD00145389 /* RequestServiceRemote.swift in Sources */,
 				932ED2101BFC01FC0072C1C4 /* DetailViewController.swift in Sources */,
+				93B3C8121C02A17400145389 /* Room.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,12 +556,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		932ED20A1BFC01FC0072C1C4 /* CleanRooms.xcdatamodeld */ = {
+		93B3C80D1C02A17400145389 /* CleanRooms.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				932ED20B1BFC01FC0072C1C4 /* CleanRooms.xcdatamodel */,
+				93B3C80E1C02A17400145389 /* CleanRooms.xcdatamodel */,
 			);
-			currentVersion = 932ED20B1BFC01FC0072C1C4 /* CleanRooms.xcdatamodel */;
+			currentVersion = 93B3C80E1C02A17400145389 /* CleanRooms.xcdatamodel */;
 			path = CleanRooms.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
