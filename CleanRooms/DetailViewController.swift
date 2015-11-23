@@ -25,7 +25,6 @@ import CoreData
 
 class DetailViewController: UITableViewController {
   
-  @IBOutlet weak var detailDescriptionLabel: UILabel!
   var managedObjectContext: NSManagedObjectContext!
   private let dateFormatter = NSDateFormatter()
   
