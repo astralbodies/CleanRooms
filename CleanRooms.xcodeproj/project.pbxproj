@@ -25,7 +25,6 @@
 		93B3C7FC1C021C0E00145389 /* RequestServiceRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C7FB1C021C0E00145389 /* RequestServiceRemoteTests.swift */; };
 		93B3C7FE1C02269100145389 /* requests.json in Resources */ = {isa = PBXBuildFile; fileRef = 93B3C7FD1C02269100145389 /* requests.json */; };
 		93B3C8001C02274900145389 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C7FF1C02274900145389 /* TestHelpers.swift */; };
-		93B3C8021C02291500145389 /* SynchronizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C8011C02291500145389 /* SynchronizationService.swift */; };
 		93B3C8061C029FFB00145389 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C8051C029FFB00145389 /* CoreDataStack.swift */; };
 		93B3C80F1C02A17400145389 /* Request+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C8091C02A17400145389 /* Request+CoreDataProperties.swift */; };
 		93B3C8101C02A17400145389 /* Room+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C80A1C02A17400145389 /* Room+CoreDataProperties.swift */; };
@@ -70,7 +69,6 @@
 		93B3C7FB1C021C0E00145389 /* RequestServiceRemoteTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestServiceRemoteTests.swift; sourceTree = "<group>"; };
 		93B3C7FD1C02269100145389 /* requests.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = requests.json; sourceTree = "<group>"; };
 		93B3C7FF1C02274900145389 /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
-		93B3C8011C02291500145389 /* SynchronizationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizationService.swift; sourceTree = "<group>"; };
 		93B3C8051C029FFB00145389 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		93B3C8091C02A17400145389 /* Request+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		93B3C80A1C02A17400145389 /* Room+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Room+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -183,7 +181,6 @@
 				93B3C8051C029FFB00145389 /* CoreDataStack.swift */,
 				932ED2441BFD6BD50072C1C4 /* RoomService.swift */,
 				93340C0D1BFF66F2004CCB0C /* RequestService.swift */,
-				93B3C8011C02291500145389 /* SynchronizationService.swift */,
 			);
 			name = Local;
 			sourceTree = "<group>";
@@ -332,7 +329,6 @@
 				93B3C8061C029FFB00145389 /* CoreDataStack.swift in Sources */,
 				93340C1C1BFF9134004CCB0C /* RemoteRoom.swift in Sources */,
 				93B3C8101C02A17400145389 /* Room+CoreDataProperties.swift in Sources */,
-				93B3C8021C02291500145389 /* SynchronizationService.swift in Sources */,
 				93340C181BFF90DE004CCB0C /* RoomServiceRemote.swift in Sources */,
 				93B3C7FA1C02181500145389 /* RemoteRequest.swift in Sources */,
 				93B3C8111C02A17400145389 /* Request.swift in Sources */,

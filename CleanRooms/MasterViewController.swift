@@ -192,23 +192,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
   */
   
   @IBAction func syncData(sender: UIBarButtonItem) {
-    let roomService = RoomService(managedObjectContext: managedObjectContext!)
-    let roomServiceRemote = RoomServiceRemote()
-    let requestService = RequestService(managedObjectContext: managedObjectContext!)
-    let requestServiceRemote = RequestServiceRemote()
-    
-    sender.enabled = false
-    
-    let syncService = SynchronizationService(roomService: roomService, roomServiceRemote: roomServiceRemote, requestService: requestService, requestServiceRemote: requestServiceRemote, managedObjectContext: managedObjectContext!)
-    syncService.synchronizeAllData { () -> Void in
-      dispatch_async(dispatch_get_main_queue(), { () -> Void in
-        sender.enabled = true
-        self.detailViewController?.detailItem = nil
-        self.tableView.reloadData()
-      })
-      
-      print("Synchronization complete.")
-    }
+    print("Synchronization is not yet implemented.")
   }
   
   
