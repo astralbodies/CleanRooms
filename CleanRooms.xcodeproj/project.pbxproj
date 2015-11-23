@@ -13,7 +13,6 @@
 		932ED2131BFC01FC0072C1C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 932ED2111BFC01FC0072C1C4 /* Main.storyboard */; };
 		932ED2151BFC01FC0072C1C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 932ED2141BFC01FC0072C1C4 /* Assets.xcassets */; };
 		932ED2181BFC01FC0072C1C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 932ED2161BFC01FC0072C1C4 /* LaunchScreen.storyboard */; };
-		932ED2231BFC01FC0072C1C4 /* CleanRoomsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932ED2221BFC01FC0072C1C4 /* CleanRoomsTests.swift */; };
 		932ED2451BFD6BD50072C1C4 /* RoomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932ED2441BFD6BD50072C1C4 /* RoomService.swift */; };
 		93340C0E1BFF66F2004CCB0C /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93340C0D1BFF66F2004CCB0C /* RequestService.swift */; };
 		93340C121BFF6C33004CCB0C /* TestCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93340C111BFF6C33004CCB0C /* TestCoreDataStack.swift */; };
@@ -27,7 +26,6 @@
 		93B3C7FE1C02269100145389 /* requests.json in Resources */ = {isa = PBXBuildFile; fileRef = 93B3C7FD1C02269100145389 /* requests.json */; };
 		93B3C8001C02274900145389 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C7FF1C02274900145389 /* TestHelpers.swift */; };
 		93B3C8021C02291500145389 /* SynchronizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C8011C02291500145389 /* SynchronizationService.swift */; };
-		93B3C8041C02805A00145389 /* RemoteRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C8031C02805A00145389 /* RemoteRequestTests.swift */; };
 		93B3C8061C029FFB00145389 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C8051C029FFB00145389 /* CoreDataStack.swift */; };
 		93B3C80F1C02A17400145389 /* Request+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C8091C02A17400145389 /* Request+CoreDataProperties.swift */; };
 		93B3C8101C02A17400145389 /* Room+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B3C80A1C02A17400145389 /* Room+CoreDataProperties.swift */; };
@@ -59,7 +57,6 @@
 		932ED2171BFC01FC0072C1C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		932ED2191BFC01FC0072C1C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		932ED21E1BFC01FC0072C1C4 /* CleanRoomsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanRoomsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		932ED2221BFC01FC0072C1C4 /* CleanRoomsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanRoomsTests.swift; sourceTree = "<group>"; };
 		932ED2241BFC01FC0072C1C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		932ED2441BFD6BD50072C1C4 /* RoomService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomService.swift; sourceTree = "<group>"; };
 		93340C0D1BFF66F2004CCB0C /* RequestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestService.swift; sourceTree = "<group>"; };
@@ -74,7 +71,6 @@
 		93B3C7FD1C02269100145389 /* requests.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = requests.json; sourceTree = "<group>"; };
 		93B3C7FF1C02274900145389 /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		93B3C8011C02291500145389 /* SynchronizationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizationService.swift; sourceTree = "<group>"; };
-		93B3C8031C02805A00145389 /* RemoteRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteRequestTests.swift; sourceTree = "<group>"; };
 		93B3C8051C029FFB00145389 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		93B3C8091C02A17400145389 /* Request+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Request+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		93B3C80A1C02A17400145389 /* Room+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Room+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -207,12 +203,10 @@
 		93F1EC3F1C02060F00D3B8E8 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				932ED2221BFC01FC0072C1C4 /* CleanRoomsTests.swift */,
 				93340C151BFF7D3A004CCB0C /* RequestServiceTests.swift */,
 				93340C131BFF6F54004CCB0C /* RoomServiceTests.swift */,
 				93F1EC401C02062B00D3B8E8 /* RoomServiceRemoteTests.swift */,
 				93B3C7FB1C021C0E00145389 /* RequestServiceRemoteTests.swift */,
-				93B3C8031C02805A00145389 /* RemoteRequestTests.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -356,9 +350,7 @@
 				93F1EC411C02062B00D3B8E8 /* RoomServiceRemoteTests.swift in Sources */,
 				93340C161BFF7D3A004CCB0C /* RequestServiceTests.swift in Sources */,
 				93B3C7FC1C021C0E00145389 /* RequestServiceRemoteTests.swift in Sources */,
-				932ED2231BFC01FC0072C1C4 /* CleanRoomsTests.swift in Sources */,
 				93340C141BFF6F54004CCB0C /* RoomServiceTests.swift in Sources */,
-				93B3C8041C02805A00145389 /* RemoteRequestTests.swift in Sources */,
 				93F1EC431C02099700D3B8E8 /* MockNSURLSession.swift in Sources */,
 				93B3C8001C02274900145389 /* TestHelpers.swift in Sources */,
 			);
