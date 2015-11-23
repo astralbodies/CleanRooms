@@ -79,9 +79,9 @@ public class RequestServiceRemote {
     urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
     urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
     
-    let jsonArray = remoteRequests.map { (remoteRequest) -> [String: AnyObject] in
+    let jsonArray = ["docs": remoteRequests.map { (remoteRequest) -> [String: AnyObject] in
       return remoteRequest.jsonDictionary()
-    }
+    }]
 
     do {
       let data = try NSJSONSerialization.dataWithJSONObject(jsonArray, options: [])
@@ -99,7 +99,7 @@ public class RequestServiceRemote {
         return
       }
       
-      var json = try? NSJSONSerialization.JSONObjectWithData(data!, options: []) as! [String: AnyObject]
+      let json = try? NSJSONSerialization.JSONObjectWithData(data!, options: []) as! [[String: AnyObject]]
       
       guard json != nil else {
         print("Nil data received from updateRemoteRequests")
@@ -108,10 +108,12 @@ public class RequestServiceRemote {
       }
       
       // Typical response: [{"id":"4da74a0abb4896376622c6eeed0018f4","rev":"3-b9265d4ba6bf38e3e4228b047720694f"}]
-      let docResults = json!["docs"] as! [String: AnyObject]
-      let revisions = docResults.map({ (key, value) -> String in
-        let dictionary = value as! [String: AnyObject]
-        return dictionary["rev"] as! String
+      let revisions = json!.map({ (dictionary) -> String in
+        if let revision = dictionary["rev"] as? String {
+          return revision
+        } else {
+          return ""
+        }
       })
       
       completion(revisions: revisions)
