@@ -80,10 +80,11 @@ public class RequestService {
     return results.first as? Request
   }
   
-  public func markRequestAsCompleted(requestID: String) -> Request? {
+  public func markRequestAsCompleted(requestID: String, notes: String?) -> Request? {
     let request = getRequestByID(requestID)
     request?.completed = true
     request?.dirty = true
+    request?.notes = notes
     
     return request
   }

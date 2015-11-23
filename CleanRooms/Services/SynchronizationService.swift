@@ -107,7 +107,7 @@ public class SynchronizationService {
   func pushDirtyRequests(completion: () -> Void) {
     let dirtyRequests = requestService.getAllDirtyRequests()
     let remoteRequests = dirtyRequests.map { (request) -> RemoteRequest in
-      return RemoteRequest(requestID: request.requestID, revision: request.revision!, roomID: request.room!.roomID, requestedAt: request.requestedAt, dueBy: request.dueBy, completed: request.completed?.boolValue, completedBy: request.completedBy)
+      return RemoteRequest(requestID: request.requestID!, revision: request.revision!, roomID: request.room!.roomID, requestedAt: request.requestedAt, dueBy: request.dueBy, completed: request.completed?.boolValue, completedBy: request.completedBy, notes: request.notes)
     }
     
     requestServiceRemote.updateRemoteRequests(remoteRequests) { (revisions) -> Void in

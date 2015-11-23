@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -175,6 +176,41 @@
                                         </label>
                                     </subviews>
                                     <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Notes" id="OG6-CZ-Y0v">
+                                <rect key="frame" x="0.0" y="224" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OG6-CZ-Y0v" id="aZm-Yr-Ogw">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Notes:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gT-LG-Xcy">
+                                            <rect key="frame" x="21" y="12" width="81" height="19.5"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iaq-Ca-Sxn">
+                                            <rect key="frame" x="110" y="7" width="475" height="30"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="notesTextChanged:" destination="l7K-c6-6uQ" eventType="editingDidEnd" id="tAQ-yR-lBl"/>
+                                            </connections>
+                                        </textField>
+                                    </subviews>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="iaq-Ca-Sxn" secondAttribute="trailing" constant="7" id="607-gR-4yX"/>
+                                        <constraint firstItem="8gT-LG-Xcy" firstAttribute="centerY" secondItem="aZm-Yr-Ogw" secondAttribute="centerY" id="9by-JS-1ZE"/>
+                                        <constraint firstItem="8gT-LG-Xcy" firstAttribute="leading" secondItem="aZm-Yr-Ogw" secondAttribute="leading" constant="21" id="LNG-3x-BGH"/>
+                                        <constraint firstItem="iaq-Ca-Sxn" firstAttribute="centerY" secondItem="aZm-Yr-Ogw" secondAttribute="centerY" id="lJS-76-NBK"/>
+                                        <constraint firstItem="iaq-Ca-Sxn" firstAttribute="leading" secondItem="8gT-LG-Xcy" secondAttribute="trailing" constant="8" id="r5L-dU-AyG"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                             </tableViewCell>

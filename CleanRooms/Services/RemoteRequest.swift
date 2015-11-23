@@ -30,6 +30,7 @@ public struct RemoteRequest {
   public var dueBy: NSDate?
   public var completed: Bool?
   public var completedBy: String?
+  public var notes: String?
   
   /* Example data:
         {
@@ -45,7 +46,8 @@ public struct RemoteRequest {
                 "completed": false,
                 "completedBy": null,
                 "requestedAt": 1448206702.81973,
-                "dueBy": 1448206702.81973
+                "dueBy": 1448206702.81973,
+                "notes" : null
             }
         }
   */
@@ -60,6 +62,7 @@ public struct RemoteRequest {
     dueByTimeInterval = docBody?["dueBy"] as? Double
     completed = docBody?["completed"] as? Bool
     completedBy = docBody?["completedBy"] as? String
+    notes = docBody?["notes"] as? String
     
     if let requestedAtTimeInterval = requestedAtTimeInterval {
       requestedAt = NSDate(timeIntervalSince1970: requestedAtTimeInterval)
@@ -70,7 +73,7 @@ public struct RemoteRequest {
     }
   }
   
-  public init(requestID: String, revision: String, roomID: String, requestedAt: NSDate?, dueBy: NSDate?, completed: Bool?, completedBy: String?) {
+  public init(requestID: String, revision: String, roomID: String, requestedAt: NSDate?, dueBy: NSDate?, completed: Bool?, completedBy: String?, notes: String?) {
     self.requestID = requestID
     self.revision = revision
     self.roomID = roomID
@@ -78,6 +81,7 @@ public struct RemoteRequest {
     self.dueBy = dueBy
     self.completed = completed
     self.completedBy = completedBy
+    self.notes = notes
   }
   
   public func jsonDictionary() -> [String: AnyObject] {
@@ -88,7 +92,8 @@ public struct RemoteRequest {
       "completed" : completed ?? false,
       "completedBy" : completedBy ?? NSNull(),
       "requestedAt" : requestedAt?.timeIntervalSince1970 ?? NSNull(),
-      "dueBy" : dueBy?.timeIntervalSince1970 ?? NSNull()
+      "dueBy" : dueBy?.timeIntervalSince1970 ?? NSNull(),
+      "notes" : notes ?? NSNull()
     ]
     
     return dictionary

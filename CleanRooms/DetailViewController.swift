@@ -24,11 +24,9 @@ import UIKit
 import CoreData
 
 class DetailViewController: UITableViewController {
-  
-  @IBOutlet weak var detailDescriptionLabel: UILabel!
   var managedObjectContext: NSManagedObjectContext!
   private let dateFormatter = NSDateFormatter()
-  
+  private var notes: String?
   
   var detailItem: Request? {
     didSet {
@@ -44,10 +42,14 @@ class DetailViewController: UITableViewController {
     dateFormatter.timeStyle = .ShortStyle
     dateFormatter.locale = NSLocale.currentLocale()
   }
+  
+  @IBAction func notesTextChanged(sender: UITextField) {
+    notes = sender.text
+  }
 
   @IBAction func markRequestAsCompleted() {
     let requestService = RequestService(managedObjectContext: managedObjectContext)
-    requestService.markRequestAsCompleted(detailItem!.requestID)
+    requestService.markRequestAsCompleted(detailItem!.requestID!, notes: notes)
     
     do {
       try detailItem?.managedObjectContext?.save()
@@ -69,7 +71,7 @@ extension DetailViewController {
   
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if detailItem != nil {
-      return 4
+      return 5
     } else {
       return 1
     }
@@ -81,6 +83,8 @@ extension DetailViewController {
         return "NothingSelected"
       } else if indexPath.row < 3 {
         return "RightDetail"
+      } else if indexPath.row == 3 {
+        return "Notes"
       } else {
         return "MarkCompleted"
       }

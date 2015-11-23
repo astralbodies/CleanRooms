@@ -5,8 +5,9 @@
         <attribute name="completedBy" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dirty" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="dueBy" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="requestedAt" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="requestID" attributeType="String" syncable="YES"/>
+        <attribute name="requestID" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="revision" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="room" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Room" inverseName="requests" inverseEntity="Room" syncable="YES"/>
     </entity>
@@ -21,7 +22,7 @@
         <relationship name="requests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Request" inverseName="room" inverseEntity="Request" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Request" positionX="270" positionY="207" width="128" height="165"/>
+        <element name="Request" positionX="270" positionY="207" width="128" height="180"/>
         <element name="Room" positionX="261" positionY="198" width="128" height="165"/>
     </elements>
 </model>
