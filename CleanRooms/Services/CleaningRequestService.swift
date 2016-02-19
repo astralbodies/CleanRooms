@@ -23,68 +23,69 @@
 import Foundation
 import CoreData
 
-public class RequestService {
+public class CleaningRequestService {
   let managedObjectContext: NSManagedObjectContext
-  
+
   public init(managedObjectContext: NSManagedObjectContext) {
     self.managedObjectContext = managedObjectContext
   }
-  
-  public func getAllRequests(onlyOpen onlyOpen: Bool = false) -> [Request] {
-    let fetchRequest = NSFetchRequest(entityName: "Request")
-    
+
+  public func getAllCleaningRequests(onlyOpen onlyOpen: Bool = false) -> [CleaningRequest] {
+    let fetchRequest = NSFetchRequest(entityName: "CleaningRequest")
+
     if onlyOpen {
       fetchRequest.predicate = NSPredicate(format: "completed == %@", true)
     }
-    
+
     fetchRequest.sortDescriptors = [NSSortDescriptor(key: "requestedAt", ascending: true), NSSortDescriptor(key: "room.roomNumber", ascending: true)]
-    
+
     var results: [AnyObject]
     do {
       try results = managedObjectContext.executeFetchRequest(fetchRequest)
     } catch {
       print("Error when fetching Requests: \(error)")
-      return [Request]()
+      return [CleaningRequest]()
     }
-    
-    return results as! [Request]
+
+    return results as! [CleaningRequest]
   }
-  
-  public func getAllDirtyRequests() -> [Request] {
-    let fetchRequest = NSFetchRequest(entityName: "Request")
+
+  public func getAllDirtyCleaningRequests() -> [CleaningRequest] {
+    let fetchRequest = NSFetchRequest(entityName: "CleaningRequest")
     fetchRequest.predicate = NSPredicate(format: "dirty == %@", true)
-    
+
     var results: [AnyObject]
     do {
       try results = managedObjectContext.executeFetchRequest(fetchRequest)
     } catch {
       print("Error when fetching dirty Requests: \(error)")
-      return [Request]()
+      return [CleaningRequest]()
     }
-    
-    return results as! [Request]
+
+    return results as! [CleaningRequest]
   }
-  
-  public func getRequestByID(requestID: String) -> Request? {
-    let fetchRequest = NSFetchRequest(entityName: "Request")
+
+  public func getCleaningRequestByID(requestID: String) -> CleaningRequest? {
+    let fetchRequest = NSFetchRequest(entityName: "CleaningRequest")
     fetchRequest.predicate = NSPredicate(format: "requestID == %@", requestID)
-    
+
     var results: [AnyObject]
     do {
       try results = managedObjectContext.executeFetchRequest(fetchRequest)
     } catch {
-      print("Error when fetching Request by ID: \(error)")
+      print("Error when fetching CleaningRequest by ID: \(error)")
       return nil
     }
-    
-    return results.first as? Request
+
+    return results.first as? CleaningRequest
   }
-  
-  public func markRequestAsCompleted(requestID: String) -> Request? {
-    let request = getRequestByID(requestID)
-    request?.completed = true
-    request?.dirty = true
-    
-    return request
+
+  public func markCleaningRequestAsCompleted(requestID: String, notes: String?) -> CleaningRequest? {
+    let cleaningRequest = getCleaningRequestByID(requestID)
+    cleaningRequest?.completed = true
+    cleaningRequest?.dirty = true
+    cleaningRequest?.notes = notes
+
+    return cleaningRequest
   }
 }

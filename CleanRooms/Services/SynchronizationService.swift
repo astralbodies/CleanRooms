@@ -24,41 +24,42 @@ import Foundation
 import CoreData
 
 public class SynchronizationService {
+
   private let managedObjectContext: NSManagedObjectContext
   private let roomService: RoomService
   private let roomServiceRemote: RoomServiceRemote
-  private let requestService: RequestService
-  private let requestServiceRemote: RequestServiceRemote
-  
+  private let cleaningRequestService: CleaningRequestService
+  private let cleaningRequestServiceRemote: CleaningRequestServiceRemote
+
   public init(
     roomService: RoomService,
     roomServiceRemote: RoomServiceRemote,
-    requestService: RequestService,
-    requestServiceRemote: RequestServiceRemote,
+    cleaningRequestService: CleaningRequestService,
+    cleaningRequestServiceRemote: CleaningRequestServiceRemote,
     managedObjectContext: NSManagedObjectContext)
   {
     self.managedObjectContext = managedObjectContext
     self.roomService = roomService
     self.roomServiceRemote = roomServiceRemote
-    self.requestService = requestService
-    self.requestServiceRemote = requestServiceRemote
+    self.cleaningRequestService = cleaningRequestService
+    self.cleaningRequestServiceRemote = cleaningRequestServiceRemote
   }
-  
+
   public func synchronizeAllData(completion: () -> Void) {
-    synchronizeRooms { () -> Void in
-      self.synchronizeRequests({ () -> Void in
+    synchronizeRooms {
+      self.synchronizeRequests {
         completion()
-      })
+      }
     }
   }
-  
+
   public func synchronizeRooms(completion: () -> Void) {
-    roomServiceRemote.fetchAllRooms { (remoteRooms) -> Void in
-      self.managedObjectContext.performBlockAndWait({ () -> Void in
+    roomServiceRemote.fetchAllRooms { remoteRooms in
+      self.managedObjectContext.performBlockAndWait {
         var existingRooms = self.roomService.getAllRooms()
-        
+
         for remoteRoom in remoteRooms {
-          var room = self.roomService.getRoomByID(remoteRoom.roomID!)
+          var room = self.roomService.getRoomByID(remoteRoom.roomID)
           if let room = room {
             print("Existing room.")
             if let index = existingRooms.indexOf(room) {
@@ -69,104 +70,96 @@ public class SynchronizationService {
             print("New room.")
             room = NSEntityDescription.insertNewObjectForEntityForName("Room", inManagedObjectContext: self.managedObjectContext) as? Room
           }
-          
+
           room!.area = remoteRoom.area
           room!.bathrooms = remoteRoom.bathrooms
           room!.beds = remoteRoom.beds
           room!.revision = remoteRoom.revision
           room!.roomNumber = remoteRoom.roomNumber
-          room!.roomID = remoteRoom.roomID!
+          room!.roomID = remoteRoom.roomID
         }
-        
+
         // Delete rooms not in remote API
         for room in existingRooms {
           self.managedObjectContext.deleteObject(room)
         }
-        
-        do {
-          try self.managedObjectContext.save()
-        } catch {
-          print("Error while saving context: \(error)")
-        }
-        
+
+        self.saveContext()
         completion()
-      })
+      }
     }
-    
-    
   }
-  
+
   public func synchronizeRequests(completion: () -> Void) {
-    pushDirtyRequests { () -> Void in
-      self.pullUpdatedRequests({ () -> Void in
+    pushDirtyRequests {
+      self.pullUpdatedRequests {
         completion()
-      })
+      }
     }
   }
-  
+
   func pushDirtyRequests(completion: () -> Void) {
-    let dirtyRequests = requestService.getAllDirtyRequests()
-    let remoteRequests = dirtyRequests.map { (request) -> RemoteRequest in
-      return RemoteRequest(requestID: request.requestID, revision: request.revision!, roomID: request.room!.roomID, requestedAt: request.requestedAt, dueBy: request.dueBy, completed: request.completed?.boolValue, completedBy: request.completedBy)
+    let dirtyRequests = cleaningRequestService.getAllDirtyCleaningRequests()
+    let remoteCleaningRequests = dirtyRequests.map { cleaningRequest in
+      return RemoteCleaningRequest(requestID: cleaningRequest.requestID!, revision: cleaningRequest.revision!, roomID: cleaningRequest.room!.roomID!, requestedAt: cleaningRequest.requestedAt, dueBy: cleaningRequest.dueBy, completed: cleaningRequest.completed?.boolValue, completedBy: cleaningRequest.completedBy, notes: cleaningRequest.notes)
     }
-    
-    requestServiceRemote.updateRemoteRequests(remoteRequests) { (revisions) -> Void in
-      self.managedObjectContext.performBlock({ () -> Void in
+
+    cleaningRequestServiceRemote.updateRemoteCleaningRequests(remoteCleaningRequests) { revisions in
+      self.managedObjectContext.performBlock {
         if let revisions = revisions {
           for revision in revisions {
-            let request = dirtyRequests[revisions.indexOf(revision)!]
-            request.revision = revision
+            let cleaningRequest = dirtyRequests[revisions.indexOf(revision)!]
+            cleaningRequest.revision = revision
           }
         }
-        
-        do {
-          try self.managedObjectContext.save()
-        } catch {
-          print("Error while saving context: \(error)")
-        }
-        
+
+        self.saveContext()
         completion()
-      })
+      }
     }
   }
-  
+
   func pullUpdatedRequests(completion: () -> Void) {
-    requestServiceRemote.fetchAllRequests { (remoteRequests) -> Void in
-      self.managedObjectContext.performBlockAndWait({ () -> Void in
-        var existingRequests = self.requestService.getAllRequests()
-        
-        for remoteRequest in remoteRequests {
-          var request = self.requestService.getRequestByID(remoteRequest.requestID)
-          if let request = request {
-            if let index = existingRequests.indexOf(request) {
+    cleaningRequestServiceRemote.fetchAllRequests { remoteCleaningRequests in
+      self.managedObjectContext.performBlockAndWait {
+        var existingRequests = self.cleaningRequestService.getAllCleaningRequests()
+
+        for remoteCleaningRequest in remoteCleaningRequests {
+          var cleaningRequest = self.cleaningRequestService.getCleaningRequestByID(remoteCleaningRequest.requestID)
+          if let cleaningRequest = cleaningRequest {
+            if let index = existingRequests.indexOf(cleaningRequest) {
               existingRequests.removeAtIndex(index)
             }
           } else {
-            request = NSEntityDescription.insertNewObjectForEntityForName("Request", inManagedObjectContext: self.managedObjectContext) as? Request
+            cleaningRequest = NSEntityDescription.insertNewObjectForEntityForName("CleaningRequest", inManagedObjectContext: self.managedObjectContext) as? CleaningRequest
           }
-          
-          request!.completed = remoteRequest.completed
-          request!.completedBy = remoteRequest.completedBy
-          request!.requestedAt = remoteRequest.requestedAt
-          request!.dueBy = remoteRequest.dueBy
-          request!.requestID = remoteRequest.requestID
-          request!.revision = remoteRequest.revision
-          request!.room = self.roomService.getRoomByID(remoteRequest.roomID)
+
+          cleaningRequest!.completed = remoteCleaningRequest.completed
+          cleaningRequest!.completedBy = remoteCleaningRequest.completedBy
+          cleaningRequest!.requestedAt = remoteCleaningRequest.requestedAt
+          cleaningRequest!.dueBy = remoteCleaningRequest.dueBy
+          cleaningRequest!.requestID = remoteCleaningRequest.requestID
+          cleaningRequest!.revision = remoteCleaningRequest.revision
+          cleaningRequest!.room = self.roomService.getRoomByID(remoteCleaningRequest.roomID)
+          cleaningRequest!.notes = remoteCleaningRequest.notes
         }
-        
+
         // Delete requests not in remote API
-        for request in existingRequests {
-          self.managedObjectContext.deleteObject(request)
+        for cleaningRequest in existingRequests {
+          self.managedObjectContext.deleteObject(cleaningRequest)
         }
-        
-        do {
-          try self.managedObjectContext.save()
-        } catch {
-          print("Error while saving context: \(error)")
-        }
-        
+
+        self.saveContext()
         completion()
-      })
+      }
+    }
+  }
+
+  private func saveContext() {
+    do {
+      try self.managedObjectContext.save()
+    } catch {
+      print("Error while saving context: \(error)")
     }
   }
 }

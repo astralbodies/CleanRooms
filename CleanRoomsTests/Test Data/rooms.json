@@ -1,36 +1,33 @@
 {
-  "total_rows": 2,
-  "offset": 0,
-  "rows": [
-           {
-           "id": "b52353e4f1f3dc2cc38f1afd560005fd",
-           "key": "b52353e4f1f3dc2cc38f1afd560005fd",
-           "value": {
-           "rev": "4-6f76e54abe3fddbbba22e69903d93639"
-           },
-           "doc": {
-           "_id": "b52353e4f1f3dc2cc38f1afd560005fd",
-           "_rev": "4-6f76e54abe3fddbbba22e69903d93639",
-           "area": 300,
-           "beds": 1,
-           "roomNumber": "100",
-           "bathrooms": 1
-           }
-           },
-           {
-           "id": "b52353e4f1f3dc2cc38f1afd560012fe",
-           "key": "b52353e4f1f3dc2cc38f1afd560012fe",
-           "value": {
-           "rev": "4-b36ff50f0328d12d8ab8006560fa9c07"
-           },
-           "doc": {
-           "_id": "b52353e4f1f3dc2cc38f1afd560012fe",
-           "_rev": "4-b36ff50f0328d12d8ab8006560fa9c07",
-           "area": 300,
-           "beds": 0,
-           "roomNumber": "101",
-           "bathrooms": 1
-           }
-           }
-           ]
+	"total_rows": 2,
+	"offset": 0,
+	"rows": [{
+		"id": "b52353e4f1f3dc2cc38f1afd560005fd",
+		"key": "b52353e4f1f3dc2cc38f1afd560005fd",
+		"value": {
+			"rev": "4-6f76e54abe3fddbbba22e69903d93639"
+		},
+		"doc": {
+			"_id": "b52353e4f1f3dc2cc38f1afd560005fd",
+			"_rev": "4-6f76e54abe3fddbbba22e69903d93639",
+			"area": 300,
+			"beds": 1,
+			"roomNumber": "100",
+			"bathrooms": 1
+		}
+	}, {
+		"id": "b52353e4f1f3dc2cc38f1afd560012fe",
+		"key": "b52353e4f1f3dc2cc38f1afd560012fe",
+		"value": {
+			"rev": "4-b36ff50f0328d12d8ab8006560fa9c07"
+		},
+		"doc": {
+			"_id": "b52353e4f1f3dc2cc38f1afd560012fe",
+			"_rev": "4-b36ff50f0328d12d8ab8006560fa9c07",
+			"area": 300,
+			"beds": 0,
+			"roomNumber": "101",
+			"bathrooms": 1
+		}
+	}]
 }

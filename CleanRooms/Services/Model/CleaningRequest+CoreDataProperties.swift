@@ -20,35 +20,19 @@
 * THE SOFTWARE.
 */
 
-import XCTest
-import CleanRooms
+import Foundation
+import CoreData
 
-class RequestServiceRemoteTests: XCTestCase {
-  var mockURLSession: MockNSURLSession!
-  var subject: RequestServiceRemote!
-  
-  override func setUp() {
-    super.setUp()
-    
-    mockURLSession = MockNSURLSession()
-    subject = RequestServiceRemote(urlSession: mockURLSession)
-  }
-  
-  override func tearDown() {
-    super.tearDown()
-  }
-  
-  func testFetchAllRequests() {
-    let jsonData = readFile("requests")
-    let urlResponse = NSHTTPURLResponse(URL: NSURL(string: "http://localhost:5984/requests/_all_docs?include_docs=true")!, statusCode: 200, HTTPVersion: nil, headerFields: nil)
-    MockNSURLSession.mockResponse = (jsonData, urlResponse: urlResponse, error: nil)
-    let expectation = self.expectationWithDescription("FetchAllRequests")
-    
-    subject.fetchAllRequests { (requests) -> Void in
-      expectation.fulfill()
-      XCTAssertEqual(1, requests.count)
-    }
-    
-    self.waitForExpectationsWithTimeout(2.0, handler: nil)
-  }
+public extension CleaningRequest {
+
+  @NSManaged var completed: NSNumber?
+  @NSManaged var completedBy: String?
+  @NSManaged var dirty: NSNumber?
+  @NSManaged var dueBy: NSDate?
+  @NSManaged var requestedAt: NSDate?
+  @NSManaged var requestID: String?
+  @NSManaged var revision: String?
+  @NSManaged var notes: String?
+  @NSManaged var room: Room?
+
 }

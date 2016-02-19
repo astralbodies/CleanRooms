@@ -31,6 +31,6 @@ func readFile(filename: String) -> NSData? {
       print("Error while reading file: \(error)")
     }
   }
-  
+
   return nil
 }

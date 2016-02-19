@@ -20,12 +20,35 @@
 * THE SOFTWARE.
 */
 
-import Foundation
-import CoreData
+import XCTest
+import CleanRooms
 
+class RequestServiceRemoteTests: XCTestCase {
+  var mockURLSession: MockNSURLSession!
+  var subject: CleaningRequestServiceRemote!
 
-public class Request: NSManagedObject {
+  override func setUp() {
+    super.setUp()
 
-// Insert code here to add functionality to your managed object subclass
+    mockURLSession = MockNSURLSession()
+    subject = CleaningRequestServiceRemote(urlSession: mockURLSession)
+  }
 
+  override func tearDown() {
+    super.tearDown()
+  }
+
+  func testFetchAllRequests() {
+    let jsonData = readFile("requests")
+    let urlResponse = NSHTTPURLResponse(URL: NSURL(string: "http://localhost:5984/requests/_all_docs?include_docs=true")!, statusCode: 200, HTTPVersion: nil, headerFields: nil)
+    MockNSURLSession.mockResponse = (jsonData, urlResponse: urlResponse, error: nil)
+    let expectation = self.expectationWithDescription("FetchAllRequests")
+
+    subject.fetchAllRequests { remoteCleaningRequests in
+      expectation.fulfill()
+      XCTAssertEqual(1, remoteCleaningRequests.count)
+    }
+
+    self.waitForExpectationsWithTimeout(2.0, handler: nil)
+  }
 }

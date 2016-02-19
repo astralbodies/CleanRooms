@@ -24,18 +24,19 @@ import UIKit
 import CoreData
 
 class DetailViewController: UITableViewController {
-  
+
   var managedObjectContext: NSManagedObjectContext!
   private let dateFormatter = NSDateFormatter()
-  
-  
-  var detailItem: Request? {
+
+  private var notesTextField: UITextField!
+
+  var detailItem: CleaningRequest? {
     didSet {
       // Update the view.
       self.tableView.reloadData()
     }
   }
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -45,19 +46,19 @@ class DetailViewController: UITableViewController {
   }
 
   @IBAction func markRequestAsCompleted() {
-    let requestService = RequestService(managedObjectContext: managedObjectContext)
-    requestService.markRequestAsCompleted(detailItem!.requestID)
-    
+    let cleaningRequestService = CleaningRequestService(managedObjectContext: managedObjectContext)
+    cleaningRequestService.markCleaningRequestAsCompleted(detailItem!.requestID!, notes: notesTextField.text)
+
     do {
       try detailItem?.managedObjectContext?.save()
     } catch {
-      print("Error while saving Request: \(error)")
+      print("Error while saving CleaningRequest: \(error)")
     }
-    
+
     detailItem = nil
     tableView.reloadData()
   }
-  
+
 }
 
 // Table View Data Source Methods
@@ -65,28 +66,30 @@ extension DetailViewController {
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
-  
+
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if detailItem != nil {
-      return 4
+      return 5
     } else {
       return 1
     }
   }
-  
+
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let identifier:String = {
+    let identifier: String = {
       if self.detailItem == nil {
         return "NothingSelected"
       } else if indexPath.row < 3 {
         return "RightDetail"
+      } else if indexPath.row == 3 {
+        return "Notes"
       } else {
         return "MarkCompleted"
       }
     }()
-    
+
     let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
-    
+
     if identifier == "RightDetail" {
       switch indexPath.row {
       case 0:
@@ -99,9 +102,10 @@ extension DetailViewController {
         cell.textLabel?.text = "Requested At"
         cell.detailTextLabel?.text = "\(dateFormatter.stringFromDate(detailItem!.requestedAt!))"
       }
+    } else if identifier == "Notes" {
+      notesTextField = cell.contentView.viewWithTag(100) as! UITextField
     }
-    
+
     return cell
   }
 }
-

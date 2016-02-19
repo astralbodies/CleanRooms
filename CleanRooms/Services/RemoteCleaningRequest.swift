@@ -22,7 +22,7 @@
 
 import Foundation
 
-public struct RemoteRequest {
+public struct RemoteCleaningRequest {
   public var requestID: String
   public var revision: String
   public var roomID: String
@@ -30,7 +30,8 @@ public struct RemoteRequest {
   public var dueBy: NSDate?
   public var completed: Bool?
   public var completedBy: String?
-  
+  public var notes: String?
+
   /* Example data:
         {
             "id": "4da74a0abb4896376622c6eeed0018f4",
@@ -45,14 +46,15 @@ public struct RemoteRequest {
                 "completed": false,
                 "completedBy": null,
                 "requestedAt": 1448206702.81973,
-                "dueBy": 1448206702.81973
+                "dueBy": 1448206702.81973,
+                "notes" : null
             }
         }
   */
-  public init(jsonData: [String : AnyObject]) {
-    var requestedAtTimeInterval:Double?, dueByTimeInterval:Double?
+  public init(jsonData: [String: AnyObject]) {
+    var requestedAtTimeInterval: Double?, dueByTimeInterval: Double?
     requestID = jsonData["id"] as! String
-    
+
     let docBody = jsonData["doc"] as? [String: AnyObject]
     revision = docBody?["_rev"] as! String
     roomID = docBody?["roomID"] as! String
@@ -60,17 +62,18 @@ public struct RemoteRequest {
     dueByTimeInterval = docBody?["dueBy"] as? Double
     completed = docBody?["completed"] as? Bool
     completedBy = docBody?["completedBy"] as? String
-    
+    notes = docBody?["notes"] as? String
+
     if let requestedAtTimeInterval = requestedAtTimeInterval {
       requestedAt = NSDate(timeIntervalSince1970: requestedAtTimeInterval)
     }
-    
+
     if let dueByTimeInterval = dueByTimeInterval {
       dueBy = NSDate(timeIntervalSince1970: dueByTimeInterval)
     }
   }
-  
-  public init(requestID: String, revision: String, roomID: String, requestedAt: NSDate?, dueBy: NSDate?, completed: Bool?, completedBy: String?) {
+
+  public init(requestID: String, revision: String, roomID: String, requestedAt: NSDate?, dueBy: NSDate?, completed: Bool?, completedBy: String?, notes: String?) {
     self.requestID = requestID
     self.revision = revision
     self.roomID = roomID
@@ -78,19 +81,21 @@ public struct RemoteRequest {
     self.dueBy = dueBy
     self.completed = completed
     self.completedBy = completedBy
+    self.notes = notes
   }
-  
+
   public func jsonDictionary() -> [String: AnyObject] {
-    let dictionary:[String: AnyObject] = [
+    let dictionary: [String: AnyObject] = [
       "_id" : requestID,
       "_rev" : revision,
       "roomID" : roomID,
       "completed" : completed ?? false,
       "completedBy" : completedBy ?? NSNull(),
       "requestedAt" : requestedAt?.timeIntervalSince1970 ?? NSNull(),
-      "dueBy" : dueBy?.timeIntervalSince1970 ?? NSNull()
+      "dueBy" : dueBy?.timeIntervalSince1970 ?? NSNull(),
+      "notes" : notes ?? NSNull()
     ]
-    
+
     return dictionary
   }
 }
